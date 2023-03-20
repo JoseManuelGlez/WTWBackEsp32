@@ -1,17 +1,16 @@
 package com.example.wtwbackesp32.entities;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@Entity
-@Table(name="esp32")
+@Document(collection = "esp32")
 public class Esp32 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String key;
     private String type;

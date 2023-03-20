@@ -8,7 +8,9 @@ import com.example.wtwbackesp32.repositories.IEsp32Repository;
 import com.example.wtwbackesp32.services.interfaces.IEsp32Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 
+@Service
 public class Esp32ServiceImpl implements IEsp32Service {
     @Autowired
     private IEsp32Repository repository;
@@ -25,7 +27,7 @@ public class Esp32ServiceImpl implements IEsp32Service {
     }
 
     @Override
-    public BaseResponse update(Long id, CreateEsp32Request request) {
+    public BaseResponse update(String id, CreateEsp32Request request) {
         Esp32 esp32 = findAndEnsureExist(id);
 
         esp32.setKey(request.getKey());
@@ -53,7 +55,7 @@ public class Esp32ServiceImpl implements IEsp32Service {
         return response;
     }
 
-    private Esp32 findAndEnsureExist(Long id){
+    private Esp32 findAndEnsureExist(String id){
         return repository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
     }
 }
