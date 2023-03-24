@@ -1,4 +1,4 @@
-package com.example.wtwbackesp32.controllers.dtos;
+package com.example.wtwbackesp32.controllers;
 
 import com.example.wtwbackesp32.controllers.dtos.requests.CreateEsp32Request;
 import com.example.wtwbackesp32.controllers.dtos.responses.BaseResponse;
@@ -18,7 +18,12 @@ public class Esp32Controller {
     }
 
     @PutMapping("{id}")
-    public BaseResponse update(@PathVariable String id, @RequestBody CreateEsp32Request request){
+    public BaseResponse update(@PathVariable Long id, @RequestBody CreateEsp32Request request){
         return service.update(id, request);
+    }
+
+    @GetMapping("{userId}")
+    public BaseResponse findByUserId(@PathVariable Long userId){
+        return service.findByUserId(userId);
     }
 }

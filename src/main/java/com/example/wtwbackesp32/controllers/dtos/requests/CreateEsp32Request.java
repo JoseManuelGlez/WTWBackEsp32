@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter @Setter
 public class CreateEsp32Request {
-    private String key;
+    private String keyEsp32;
     private String type;
+    private Long userId;
 }
