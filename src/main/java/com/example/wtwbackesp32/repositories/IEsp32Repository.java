@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface IEsp32Repository extends JpaRepository<Esp32, Long> {
-    @Query(value = "SELECT esp32.id AS Id, esp32.type AS type, esp32.key_esp32 AS keyEsp32  FROM esp32 " +
+    @Query(value = "SELECT esp32.id AS espId, esp32.type AS espType, esp32.key_esp32 AS espKey  FROM esp32 " +
             "WHERE esp32.user_id = :userId ;", nativeQuery = true)
     List <IEsp32Projection> findByUserId(Long userId);
 }
