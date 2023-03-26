@@ -28,6 +28,6 @@ public class Esp32Controller {
         return service.findByUserId(userId);
     }
 
-    @GetMa
+    @GetMapping("user/{key}")
     public BaseResponse findUserIdByKey(@PathVariable String key){return service.findUserByKey(key);}
 }
