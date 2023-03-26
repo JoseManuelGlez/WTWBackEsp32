@@ -5,6 +5,7 @@ import com.example.wtwbackesp32.controllers.dtos.responses.BaseResponse;
 import com.example.wtwbackesp32.controllers.dtos.responses.CreateEsp32Response;
 import com.example.wtwbackesp32.entities.Esp32;
 import com.example.wtwbackesp32.entities.projections.IEsp32Projection;
+import com.example.wtwbackesp32.entities.projections.IEsp32UserProjection;
 import com.example.wtwbackesp32.repositories.IEsp32Repository;
 import com.example.wtwbackesp32.services.interfaces.IEsp32Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,19 @@ public class Esp32ServiceImpl implements IEsp32Service {
                 .message("BaseResponse created")
                 .success(Boolean.TRUE)
                     .httpStatus(HttpStatus.CREATED).build();
+    }
+
+    @Override
+    public BaseResponse findUserByKey(String key) {
+        return from(repository.findUserByKey(key));
+    }
+
+    private BaseResponse from(IEsp32UserProjection projection) {
+        return BaseResponse.builder()
+                .data(projection)
+                .message("User found")
+                .success(Boolean.TRUE)
+                .httpStatus(HttpStatus.CREATED).build();
     }
 
     private List<IEsp32Projection> from(Long userId){
